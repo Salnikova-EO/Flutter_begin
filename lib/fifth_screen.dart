@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:http/http.dart' as http;
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {
@@ -46,35 +45,21 @@ class Photo {
   }
 }
 
-
-class FiftheScreen extends StatelessWidget {
-  const FiftheScreen({Key? key}) : super(key: key);
-
+class FiftheScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Isolate Demo';
-
-    return const MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
-    );
-  }
+  createState() => new FiftheScreenState();
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class FiftheScreenState extends State<FiftheScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("Асинхронный вызов"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  {
-          print(fetchPhotos(http.Client()));
+        onPressed: () {
+          fetchPhotos(http.Client());
         },
         tooltip: 'async',
         child: const Icon(Icons.add),
@@ -106,13 +91,38 @@ class PhotosList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
+    return ListView.builder(
       itemCount: photos.length,
       itemBuilder: (context, index) {
-        return Image.network(photos[index].thumbnailUrl);
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width,
+                child: Image.network(photos[index].thumbnailUrl),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width / 5,
+                color: Color.fromRGBO(67, 171, 245, 1),
+                child: Text(
+                  photos[index].title,
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
