@@ -5,16 +5,14 @@ class FourthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: Center(
-          child: RandomWords(),
-        ),
+      body: Center(
+        child: RandomWords(),
+      ),
     );
-    
   }
 }
 
 class _RandomWordsState extends State<RandomWords> {
-  
   final _suggestions = <WordPair>[];
   final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -37,34 +35,36 @@ class _RandomWordsState extends State<RandomWords> {
   // #enddocregion _buildSuggestions
 
   // #docregion _buildRow
- Widget _buildRow(WordPair pair) {
-  final alreadySaved = _saved.contains(pair);
-  return ListTile(
-    title: Text(
-      pair.asPascalCase,
-      style: _biggerFont,
-    ),
-    trailing: Icon(   // NEW from here... 
-      alreadySaved ? Icons.favorite : Icons.favorite_border,
-      color: alreadySaved ? Colors.red : null,
-      semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
-    ),
-    onTap: () {      // NEW lines from here...
-      setState(() {
-        if (alreadySaved) {
-          _saved.remove(pair);
-        } else { 
-          _saved.add(pair); 
-        } 
-      });
-    },   
-  );
-}
+  Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+    return ListTile(
+      title: Text(
+        pair.asPascalCase,
+        style: _biggerFont,
+      ),
+      trailing: Icon(
+        // NEW from here...
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+        semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+      ),
+      onTap: () {
+        // NEW lines from here...
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
+    );
+  }
   // #enddocregion _buildRow
 
   // #docregion RWS-build
   @override
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Startup Name Generator'),
@@ -79,6 +79,7 @@ class _RandomWordsState extends State<RandomWords> {
       body: _buildSuggestions(),
     );
   }
+
   void _pushSaved() {
     Navigator.of(context).push(
       // Add lines from here...
@@ -111,10 +112,7 @@ class _RandomWordsState extends State<RandomWords> {
       ), // ...to here.
     );
   }
-  
-
 }
-
 
 class RandomWords extends StatefulWidget {
   @override

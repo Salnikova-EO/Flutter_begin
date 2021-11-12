@@ -10,10 +10,12 @@ class SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("4 квадрата")),
+      appBar: new AppBar(
+        title: new Text("4 квадрата"),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  {
-          setState(() {});          
+        onPressed: () {
+          setState(() {});
         },
         tooltip: 'generate colors',
         child: const Icon(Icons.add),
@@ -43,11 +45,12 @@ class SecondScreenState extends State<SecondScreen> {
     );
   }
 }
+
 Widget _makeContainer() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      width: 200,
-      height: 200,
-      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-    );
-  }
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    width: 200,
+    height: 200,
+    color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+  );
+}
