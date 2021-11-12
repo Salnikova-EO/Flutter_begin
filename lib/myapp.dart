@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             itemCount: screen.length,
             itemBuilder: (BuildContext context, int index) {
               String key = screen.keys.elementAt(index);
-              return new Column(
+              return  Column(
                 children: <Widget>[
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -67,7 +67,9 @@ class MyApp extends StatelessWidget {
               );
             },
           ),
-          appBar: AppBar(title: Text("Главная")),
+          appBar: AppBar(
+            title: Text("Главная"),
+          ),
         ));
   }
 }
