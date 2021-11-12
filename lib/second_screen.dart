@@ -3,15 +3,15 @@ import 'dart:math';
 
 class SecondScreen extends StatefulWidget {
   @override
-  createState() => new SecondScreenState();
+  createState() =>  SecondScreenState();
 }
 
 class SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("4 квадрата"),
+    return  Scaffold(
+      appBar: AppBar(
+        title: Text("4 квадрата"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

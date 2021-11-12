@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class ThirdScreen extends StatelessWidget {
+class ThirdScreen extends StatefulWidget {
+  @override
+  createState() => new ThirdScreenState();
+}
+
+class ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {});
+        },
+        tooltip: 'generate colors',
+        child: const Icon(Icons.add),
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.all(8),
         itemCount: 1000,
