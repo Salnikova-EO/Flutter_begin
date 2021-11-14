@@ -7,9 +7,7 @@ import 'package:http/http.dart' as http;
 Future<List<Photo>> fetchPhotos(http.Client client) async {
   final response = await client
       .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
-
-  // Use the compute function to run parsePhotos in a separate isolate.
-  return compute(parsePhotos, response.body);
+  return parsePhotos(response.body);
 }
 
 // A function that converts a response body into a List<Photo>.
@@ -59,7 +57,7 @@ class FiftheScreenState extends State<FiftheScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          fetchPhotos(http.Client());
+         setState(() {});
         },
         tooltip: 'async',
         child: const Icon(Icons.add),

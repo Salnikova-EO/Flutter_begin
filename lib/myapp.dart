@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          appBar: AppBar(
+            title: Text("Главная"),
+          ),
           body: ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: screen.length,
@@ -36,7 +39,6 @@ class MyApp extends StatelessWidget {
               return  Column(
                 children: <Widget>[
                   Container(
-                    width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: SizedBox(
                       height: 48,
@@ -66,10 +68,7 @@ class MyApp extends StatelessWidget {
                 ],
               );
             },
-          ),
-          appBar: AppBar(
-            title: Text("Главная"),
-          ),
+          ),          
         ));
   }
 }
