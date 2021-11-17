@@ -35,7 +35,7 @@ class ThirdScreenState extends State<ThirdScreen> {
   }
 }
 
-Widget _makeContainer(width) {
+Widget _makeContainer(dynamic width) {
   return Container(
     width: width,
     height: 48,
