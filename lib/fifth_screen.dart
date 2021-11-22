@@ -92,36 +92,44 @@ class PhotosList extends StatelessWidget {
     return ListView.builder(
       itemCount: photos.length,
       itemBuilder: (context, index) {
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: Stack(
-            alignment: AlignmentDirectional.bottomCenter,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width,
-                child: Image.network(photos[index].thumbnailUrl),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width / 5,
-                color: Color.fromRGBO(67, 171, 245, 1),
-                child: Text(
-                  photos[index].title,
-                  style: TextStyle(fontSize: 14),
-                ),
-              ),
-            ],
-          ),
-        );
+        return _makeContainer(index, context);
       },
     );
   }
+
+  Widget _makeContainer(int index, BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),        
+      ),
+      clipBehavior: Clip.hardEdge,
+    //  width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Stack(
+       // fit: StackFit.expand,
+        alignment: AlignmentDirectional.bottomCenter,
+        children: <Widget>[
+          Image.network(
+            photos[index].thumbnailUrl,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+          ),
+          Container(
+            color: Color.fromRGBO(67, 171, 245, 1),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            width: MediaQuery.of(context).size.width,
+            height: 100,
+            child: Text(
+              photos[index].title,
+              style: TextStyle(fontSize: 14),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }
+

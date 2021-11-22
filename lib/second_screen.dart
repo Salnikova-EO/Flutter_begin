@@ -28,15 +28,15 @@ class SecondScreenState extends State<SecondScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _makeContainer(),
-                _makeContainer(),
+                _makeContainer(context),
+                _makeContainer(context),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _makeContainer(),
-                _makeContainer(),
+                _makeContainer(context),
+                _makeContainer(context),
               ],
             ),
           ],
@@ -46,11 +46,11 @@ class SecondScreenState extends State<SecondScreen> {
   }
 }
 
-Widget _makeContainer() {
+Widget _makeContainer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    width: 200,
-    height: 200,
+    width: MediaQuery.of(context).size.width/2 - 30,
+    height: MediaQuery.of(context).size.width/2 - 30,
     color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
   );
 }
