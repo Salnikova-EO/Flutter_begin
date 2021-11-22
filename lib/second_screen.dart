@@ -46,7 +46,7 @@ class SecondScreenState extends State<SecondScreen> {
   }
 }
 
-Widget _makeContainer(context) {
+Widget _makeContainer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
     width: MediaQuery.of(context).size.width/2 - 30,

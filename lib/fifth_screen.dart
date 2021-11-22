@@ -97,16 +97,17 @@ class PhotosList extends StatelessWidget {
     );
   }
 
-  Widget _makeContainer(index, context) {
+  Widget _makeContainer(int index, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),        
       ),
       clipBehavior: Clip.hardEdge,
-      width: MediaQuery.of(context).size.width,
+    //  width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: Stack(
+       // fit: StackFit.expand,
         alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
           Image.network(

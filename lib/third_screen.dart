@@ -7,6 +7,7 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class ThirdScreenState extends State<ThirdScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class ThirdScreenState extends State<ThirdScreen> {
         itemBuilder: (BuildContext context, int index) {
           return new Column(
             children: <Widget>[
-              _makeContainer(MediaQuery.of(context).size.width),
+              _makeContainer(context),
             ],
           );
         },
@@ -35,9 +36,9 @@ class ThirdScreenState extends State<ThirdScreen> {
   }
 }
 
-Widget _makeContainer(dynamic width) {
+Widget _makeContainer( BuildContext context) {
   return Container(
-    width: width,
+    //width: MediaQuery.of(context).size.width,
     height: 48,
     margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
